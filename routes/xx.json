@@ -1,0 +1,35 @@
+{
+    "statusCode": 200,
+    "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n    <title>Environment Canada Weather </title>\n  <link rel=\"stylesheet\" href=\"css/wxlink.css\" type=\"text/css\" />\n</head>\n<body>\n<div id=\"wxlink\">\n\t<noscript>\n\t\t<div class=\"maindiv\">\n\t\t\t<div class=\"heading\">Dease Lake, BC</div>\n\t\t\t<div class=\"substLinkDiv\">\n\t\t\t\t<a href=\"//weather.gc.ca/city/pages/bc-14_metric_e.html\">Environment Canada Weather</a>\n\t\t\t</div>\n\t\t\t<img class=\"ecWordmark\" src=\"//weather.gc.ca/images/ecfip_e.gif\" alt=\"Environment Canada\" title=\"Environment Canada\" />\n\t\t</div>\n\t</noscript>\n</div>\n<script src=\"//weather.gc.ca/wxlink/site_js/s0000227_e.js\"></script>\n<!-- <script type=\"text/javascript\" src=\"js/hostname.js\"></script> -->\n<script type=\"text/javascript\" src=\"js/wxlink.js\"></script>\n</body>\n</html>\n",
+    "headers": {
+        "date": "Wed, 11 Jul 2018 02:02:56 GMT",
+        "server": "Apache",
+        "last-modified": "Wed, 11 Jul 2018 02:02:56 GMT",
+        "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+        "pragma": "no-cache",
+        "expires": "Sat, 26 Jul 1997 05:00:00 GMT",
+        "vary": "Accept-Encoding",
+        "x-ua-compatible": "IE=Edge",
+        "content-length": "794",
+        "connection": "close",
+        "content-type": "text/html"
+    },
+    "request": {
+        "uri": {
+            "protocol": "https:",
+            "slashes": true,
+            "auth": null,
+            "host": "weather.gc.ca",
+            "port": 443,
+            "hostname": "weather.gc.ca",
+            "hash": null,
+            "search": "?cityCode=bc-14&amp;lang=e",
+            "query": "cityCode=bc-14&amp;lang=e",
+            "pathname": "/wxlink/wxlink.html",
+            "path": "/wxlink/wxlink.html?cityCode=bc-14&amp;lang=e",
+            "href": "https://weather.gc.ca/wxlink/wxlink.html?cityCode=bc-14&amp;lang=e"
+        },
+        "method": "GET",
+        "headers": {}
+    }
+}
