@@ -23,7 +23,8 @@
     <% for(var i=0; i < message.length; i++) { %>
        <div id=<%= message[i].id %> class="info">
           <p><%= message[i].name %></p>
-          <p id="temp"><%= message[i].temp %>°C</p>
+          <p><%= message[i].temp %>°C</p>
+          <p><%= message[i].cond %></p>
        </div>
     <% } %>
  </div>

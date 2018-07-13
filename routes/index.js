@@ -24,7 +24,7 @@ function findinfo(str, body) {
     var newbody = body.slice(body.indexOf(str));
     //console.log("this is newbody"+newbody);
    
-    var end = newbody.indexOf(';');
+    var end = newbody.indexOf('\n');
     // console.log("the end point: "+end);
     // console.log("the new string :"+newbody.substring(str.length, end))
     return newbody.substring(str.length+1, end-1);
@@ -47,13 +47,15 @@ function sendreq() {
             //  var end = newbody.indexOf(";");
             //  var Temperature = newbody.substring(search.length+2,end-1);
             //  console.log(Temperature);
-            var Temperature = findinfo('obTemperature = ', body);
-            var City = findinfo('cityName = ', body);
+            var Temperature = findinfo('obTemperature = ', body).replace('"','');
+            var City = findinfo('cityName = ', body).replace('"','');
+            var Condition = findinfo('Condition = ',body);
             //var Condition = findinfo('obCondition = ',body);
            // console.log("THIS IS " + Temperature + " " + City);
             var citytemp={};
             citytemp.name=City;
             citytemp.temp=Temperature;
+            citytemp.cond=Condition;
             var id;
             switch (citytemp.name) {
                 case "Terrace":
@@ -84,7 +86,7 @@ function sendreq() {
             }
         });
     }
-    //console.log(listweather);
+    console.log(listweather);
     return listweather;
 
 }
