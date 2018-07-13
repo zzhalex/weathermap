@@ -1,78 +1,25 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Info windows</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 50%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="input">
-    
-      <tbody>
-          <% for(var i=0; i < message.length; i++) { %>
-         <tr>
-  
-           <td><%= message[i].name %></td>
-           <td><%= message[i].temp %></td>
-          
-  
-  
-         </tr>
-      <% } %>
-        </tbody>
-    
-    </div>
-    <div id="map"></div>
-    <script>
-       console.log(document.getElementById('input'));
-    var inbox = document.getElementById('input').innerHTML;
-      // var infowindow = new google.maps.InfoWindow({
-      //    content:inbox
-      // })
-      // This example displays a marker at the center of Australia.
-      // When the user clicks the marker, an info window opens.
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>WeatherMAP</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
 
-      function initMap() {
-        var uluru = {lat: 49.267959, lng: -122.991250};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8,
-          center: uluru
-        });
+<body>
+  <div class="input">
+    <% for(var i=0; i < message.length; i++) { %>
+       <div id=<%= message[i].id %>>
+          <p><%= message[i].name %></p>
+          <p id="temp"><%= message[i].temp %>°C</p>
+       </div>
+    <% } %>
+ </div>
+  <div id="map"></div>
+  <script src="/javascripts/map.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCIU0rkg6SDCi6_2sFFnGEYc7Lrl-kaic&callback=initMap">
+  </script>
+</body>
 
-        var contentString = '<div id="content">'+
-              inbox+
-            '</div>';
-
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
-
-        var marker = new google.maps.Marker({
-          position: Surrey,
-          map: map,
-          title: 'Uluru (Ayers Rock)'
-        });
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCIU0rkg6SDCi6_2sFFnGEYc7Lrl-kaic&callback=initMap">
-    </script>
-  </body>
 </html>
