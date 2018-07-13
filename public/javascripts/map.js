@@ -55,20 +55,20 @@ let locationlist = [{
     }
   }
 ]
-
+//insert all needed data in the json obj for gmap
 for (var i = 0; i < locationlist.length; i++) {
 //   var content;
 //   var index;
   var info = document.getElementsByClassName('input')[0].children[i];
 //   console.log(info);
-  console.log(info.id);
-  console.log(info.innerText);
+  // console.log(info.id);
+  // console.log(info.innerText);
   locationlist[info.id].content =info.innerText;  
 }
 console.log(locationlist);
 
 
-
+//set markers and infowindow
 function setMarkers(map) {
  
   for (var i = 0; i < locationlist.length; i++) {

@@ -2,9 +2,7 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 
-
-
-
+//the request address of each city
 let codeList = { data: [
     { name: 'Dease'+'Lake', code: 's0000227_e'}, 
     { name: 'Fort'+'Nelson', code: 's0000771_e'}, 
@@ -15,21 +13,19 @@ let codeList = { data: [
     { name: 'Creston', code: 's0000212_e' }
 ]};
 
-let listweather = {data:[
- 
-]}
+let listweather = {data:[]};
 
+//Find the Data in the string file
 function findinfo(str, body) {
-    // console.log("====================================== ");
+    
     var newbody = body.slice(body.indexOf(str));
     //console.log("this is newbody"+newbody);
-   
     var end = newbody.indexOf('\n');
     // console.log("the end point: "+end);
     // console.log("the new string :"+newbody.substring(str.length, end))
     return newbody.substring(str.length+1, end-1);
 }
-
+//Get the weather data from the Environment Canada
 function sendreq() {
 
     //Dease Lake 14,Fort Nelson83, Terrace 80, Prince George 79, Whistler 86, Revelstoke 65, Creston 26
@@ -39,19 +35,13 @@ function sendreq() {
         var url = "https://weather.gc.ca/wxlink/site_js/" + codeList.data[i].code + ".js";
         //console.log(url);
         request(url, function (error, response, body) {
-            //console.log(i + "xxxxxxxxxxxxxxxx");
-
-
-            //  var search='obTemperature =';
-            //  var newbody = body.slice(body.indexOf(search));
-            //  var end = newbody.indexOf(";");
-            //  var Temperature = newbody.substring(search.length+2,end-1);
-            //  console.log(Temperature);
+            //==========================================================
+            //Find the temperature,cityname,condition data in the string,
+            //then store them in the json 
+            //==========================================================
             var Temperature = findinfo('obTemperature = ', body).replace('"','');
             var City = findinfo('cityName = ', body).replace('"','');
             var Condition = findinfo('Condition = ',body);
-            //var Condition = findinfo('obCondition = ',body);
-           // console.log("THIS IS " + Temperature + " " + City);
             var citytemp={};
             citytemp.name=City;
             citytemp.temp=Temperature;
@@ -86,7 +76,7 @@ function sendreq() {
             }
         });
     }
-    console.log(listweather);
+    // console.log(listweather);
     return listweather;
 
 }
@@ -94,8 +84,8 @@ function sendreq() {
 
 router.get('/', function (req, res, next) {
     var sendinfo= sendreq();
-    console.log(sendinfo);
-    console.log(typeof(String(sendinfo.data)));
+    // console.log(sendinfo);
+    // console.log(typeof(String(sendinfo.data)));
     res.render('index',{message:sendinfo.data});
 });
 
