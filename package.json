@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "axios": "^0.20.0",
@@ -17,8 +17,7 @@
     "isomorphic-fetch": "^2.2.1",
     "morgan": "~1.9.0",
     "request": "^2.87.0",
-    "serve-favicon": "~2.4.5",
-    "vue": "^2.6.12"
+    "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
     "nodemon": "^1.17.5"

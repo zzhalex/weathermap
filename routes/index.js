@@ -6,10 +6,10 @@ router.get("/", function (req, res) {
   res.sendFile("index.html");
 });
 
-async function getCurWeather() {
+async function getCurWeather(city) {
   let url = "http://api.openweathermap.org/data/2.5/weather";
-  let city = "vancouver";
   let appid = process.env.weatherApi;
+  console.log(city);
   try {
     const response = await axios.get(url, {
       params: {
@@ -17,15 +17,18 @@ async function getCurWeather() {
         appid: appid,
       },
     });
-    console.log(response);
+    //console.log(response);
     return response.data;
   } catch (error) {
-    console.error(error);
+    throw error;
+    //console.error(error);
   }
 }
 
 router.get("/weather", async function (req, res, next) {
-  let data = await getCurWeather();
+  console.log("api weather");
+  //console.log(req.query);
+  let data = await getCurWeather(req.query.city);
   res.send(data);
 });
 module.exports = router;
