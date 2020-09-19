@@ -6,6 +6,16 @@ router.get("/", function (req, res) {
   res.sendFile("index.html");
 });
 
+const filterData = (data) => {
+  let odata = {
+    temp: data.main.temp,
+    name: data.name,
+    icon: data.weather[0].icon,
+    weather: data.weather[0].description,
+  };
+  return odata;
+};
+
 async function getCurWeather(city) {
   let url = "http://api.openweathermap.org/data/2.5/weather";
   let appid = process.env.weatherApi;
@@ -18,17 +28,19 @@ async function getCurWeather(city) {
       },
     });
     //console.log(response);
-    return response.data;
+    return filterData(response.data);
   } catch (error) {
     throw error;
-    //console.error(error);
   }
 }
 
 router.get("/weather", async function (req, res, next) {
   console.log("api weather");
-  //console.log(req.query);
-  let data = await getCurWeather(req.query.city);
-  res.send(data);
+  try {
+    let data = await getCurWeather(req.query.city);
+    res.send(data);
+  } catch (err) {
+    next(err);
+  }
 });
 module.exports = router;
