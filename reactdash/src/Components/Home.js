@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
-
+import WeatherCard from "./WeatherCard";
 function Home() {
   const inputEl = useRef(null);
+  const [card, setCard] = useState(null);
   const cityQuery = () => {
     let city = inputEl.current.value;
     axios
@@ -12,23 +13,29 @@ function Home() {
         },
       })
       .then(function (res) {
-        console.log(res);
+        console.log(res.data);
+        setCard(res.data);
       });
   };
   return (
-    <div className="searchBar">
-      <div className="search-input-container">
-        <input
-          className="search-input"
-          ref={inputEl}
-          type="search"
-          placeholder="Search..."
-        />
-        <span className="material-icons" onClick={cityQuery}>
-          search
-        </span>
+    <React.Fragment>
+      <div className="searchBar">
+        <div className="search-input-container">
+          <input
+            className="search-input"
+            ref={inputEl}
+            type="search"
+            placeholder="Search..."
+          />
+          <span className="material-icons" onClick={cityQuery}>
+            search
+          </span>
+        </div>
       </div>
-    </div>
+      <div className="homeBody">
+        <WeatherCard props={card} />
+      </div>
+    </React.Fragment>
   );
 }
 
