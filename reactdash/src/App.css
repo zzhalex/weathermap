@@ -67,4 +67,20 @@ li a:hover {
   height: calc(100% - 130px);
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  padding: 20px 100px 20px 100px;
+}
+
+.homeCard {
+  flex-direction: column;
+}
+
+.homeTable {
+  margin-top: 12px;
+}
+
+.ant-card-body p {
+  width: 202px;
+  margin-top: 12px;
+  margin-left: 50px;
 }

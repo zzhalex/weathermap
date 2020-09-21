@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import WeatherCard from "./WeatherCard";
+import WeatherTable from "./WeatherTable";
 function Home() {
   const inputEl = useRef(null);
   const [card, setCard] = useState(null);
+  const [table, setTable] = useState(null);
   const cityQuery = () => {
     let city = inputEl.current.value;
     axios
@@ -15,6 +17,7 @@ function Home() {
       .then(function (res) {
         console.log(res.data);
         setCard(res.data);
+        setTable(res.data.forecastData.list);
       });
   };
   return (
@@ -33,7 +36,14 @@ function Home() {
         </div>
       </div>
       <div className="homeBody">
-        <WeatherCard props={card} />
+        <div className="homeCard">
+          {" "}
+          <WeatherCard props={card} />
+        </div>
+        <div className="homeTable">
+          {" "}
+          <WeatherTable props={table} />
+        </div>
       </div>
     </React.Fragment>
   );
