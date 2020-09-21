@@ -16,7 +16,5 @@ Weather Box is a website for checking weather based on the openweathermap API
 - Vue.js based dashboard(include vue router)
 - Try UIkit for style
 - More integration for openweathermap API:
-  - Minute Forecast 1 hour
-  - Hourly Forecast 2 days
   - Daily Forecast 7 days
   - Historical weather 5 days
