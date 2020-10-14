@@ -3,7 +3,8 @@ var router = express.Router();
 const { getWeather } = require("../weather/weatherFunc");
 
 router.get("/", function (req, res) {
-  res.sendFile("index.html");
+  console.log("INDEX");
+  res.sendFile("zz.html");
 });
 
 router.get("/weather", async function (req, res, next) {

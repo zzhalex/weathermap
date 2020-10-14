@@ -7,14 +7,12 @@ Weather Box is a website for checking weather based on the openweathermap API
 - Express - fast node.js framework for building REST API
 - nodemon - restart server if there is any change in the code base
 - React.js - front end library
+- React router
 - axios - Promise based HTTP client for node.js
 - Antd - Ant Design for React
 - Continued...
 
-### To Do
+### Function
 
-- Vue.js based dashboard(include vue router)
-- Try UIkit for style
-- More integration for openweathermap API:
-  - Daily Forecast 7 days
-  - Historical weather 5 days
+- Current weather
+- Next 7 days forecast

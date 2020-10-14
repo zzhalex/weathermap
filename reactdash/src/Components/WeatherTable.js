@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Table, Tag, Space } from "antd";
-import { head } from "request";
+import { Switch } from "antd";
+import SubChart from "./SubChart";
 
-//{temp: 289.68, weather: "overcast clouds", icon: "04d"}
 const imgStyle = {
   width: "32px",
   height: "32px",
@@ -11,6 +11,11 @@ const tableStyle = {
   height: "400px",
 };
 function WeatherTable(data) {
+  const [switchVal, setControl] = useState(true);
+  const switchControl = (e) => {
+    console.log(e);
+    setControl(e);
+  };
   const columns = [
     { title: "Date", dataIndex: "date", key: "date" },
     {
@@ -40,13 +45,25 @@ function WeatherTable(data) {
       },
     },
   ];
+
+  let tableOrChart = switchVal ? (
+    <Table style={tableStyle} columns={columns} dataSource={data.props} />
+  ) : (
+    <SubChart props={data.props} />
+  );
   let content =
     data.props == null ? (
       <div className="notifyBox"></div>
     ) : (
       <React.Fragment>
-        <h3>7 Days Forecast</h3>
-        <Table style={tableStyle} columns={columns} dataSource={data.props} />
+        <h3>7 Days Forecast</h3>{" "}
+        <Switch
+          checkedChildren="Table"
+          unCheckedChildren="Chart"
+          defaultChecked
+          onChange={switchControl}
+        />
+        {tableOrChart}
       </React.Fragment>
     );
 

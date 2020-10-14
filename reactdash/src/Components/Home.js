@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import WeatherCard from "./WeatherCard";
 import WeatherTable from "./WeatherTable";
+import SubChart from "./SubChart";
+
 function Home() {
   const inputEl = useRef(null);
   const [card, setCard] = useState(null);

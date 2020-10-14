@@ -64,7 +64,6 @@ li a:hover {
 
 .homeBody {
   width: 100%;
-  height: calc(100% - 130px);
   display: flex;
   justify-content: center;
   flex-direction: column;
