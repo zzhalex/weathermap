@@ -12,7 +12,6 @@ Weather Box is a website for checking weather based on the openweathermap API
 - Antd - Ant Design for React
 - Continued...
 
-### Function
+### Demo
 
-- Current weather
-- Next 7 days forecast
+https://thawing-waters-15809.herokuapp.com/
