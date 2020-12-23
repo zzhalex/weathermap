@@ -1,30 +1,26 @@
 import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
+import { Line } from "@ant-design/charts";
 
-function SubChart(data) {
-  console.log(data);
-  return (
-    <LineChart
-      width={730}
-      height={250}
-      data={data.props}
-      margin={{ top: 50, right: 30, left: 20, bottom: 5 }}
-    >
-      <XAxis dataKey="date" />
-      <YAxis dataKey="temp" />
-      <Tooltip />
-      <CartesianGrid stroke="#f5f5f5" />
-      <Line type="monotone" dataKey="temp" stroke="#ff7300" />
-    </LineChart>
-  );
+function SubChart(props) {
+  console.log(props);
+  let data = props.data;
+  const config = {
+    data,
+    height: 400,
+    width: 600,
+    xField: "date",
+    yField: "temp",
+    point: {
+      size: 5,
+      shape: "diamond",
+    },
+    label: {
+      style: {
+        fill: "#aaa",
+      },
+    },
+  };
+  return <Line {...config} />;
 }
 
 export default SubChart;

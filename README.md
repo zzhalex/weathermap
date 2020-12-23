@@ -10,8 +10,8 @@ Weather Box is a website for checking weather based on the openweathermap API
 - React router
 - axios - Promise based HTTP client for node.js
 - Antd - Ant Design for React
-- Continued...
 
-### Demo
+### Function
 
-https://thawing-waters-15809.herokuapp.com/
+- Current weather of four major cities
+- Next 7 days forecast

@@ -2,8 +2,7 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import WeatherCard from "./WeatherCard";
 import WeatherTable from "./WeatherTable";
-import SubChart from "./SubChart";
-
+import SavedList from "./List";
 function Home() {
   const inputEl = useRef(null);
   const [card, setCard] = useState(null);
@@ -37,6 +36,7 @@ function Home() {
           </span>
         </div>
       </div>
+      <SavedList />
       <div className="homeBody">
         <div className="homeCard">
           {" "}
@@ -47,6 +47,7 @@ function Home() {
           <WeatherTable props={table} />
         </div>
       </div>
+      
     </React.Fragment>
   );
 }

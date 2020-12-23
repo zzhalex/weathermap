@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card, Avatar } from "antd";
 
 const { Meta } = Card;

@@ -17,4 +17,17 @@ router.get("/weather", async function (req, res, next) {
   }
 });
 
+router.get("/defweather", async function (req, res, next) {
+  console.log("api default");
+  try {
+    let van = await getWeather("Vancouver");
+    let london = await getWeather("London");
+    let ny = await getWeather("new york");
+    let seattle = await getWeather("seattle");
+    res.send([van, london, ny, seattle]);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

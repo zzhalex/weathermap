@@ -66,16 +66,17 @@ li a:hover {
   width: 100%;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   padding: 20px 100px 20px 100px;
 }
 
 .homeCard {
   flex-direction: column;
+  padding: 16px;
 }
 
 .homeTable {
-  margin-top: 12px;
+  padding: 16px;
 }
 
 .ant-card-body p {

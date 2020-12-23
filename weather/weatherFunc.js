@@ -3,7 +3,7 @@ const appid = process.env.weatherApi;
 
 const currentData = (data) => {
   let odata = {
-    temp: parseFloat(data.main.temp - 273.15).toFixed(2), // Convert Kelvin to Celsius
+    temp: Math.floor(parseFloat(data.main.temp - 273.15)), // Convert Kelvin to Celsius
     name: data.name,
     icon: data.weather[0].icon,
     weather: data.weather[0].description,
@@ -21,7 +21,7 @@ const forecastData = (data) => {
     list: data.daily.map((n, i) => {
       return {
         key: i,
-        temp: parseFloat(n.temp.day - 273.15).toFixed(2),
+        temp: Math.floor(parseFloat(n.temp.day - 273.15)),
         weather: n.weather[0].description,
         icon: n.weather[0].icon,
         date: convertUnixToDate(n.dt),
